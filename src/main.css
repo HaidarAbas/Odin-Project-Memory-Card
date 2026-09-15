@@ -7,6 +7,7 @@
   --light-card-svg-shadow: #ff93f1;
   --light-text-color: #1d1d1d;
   --light-theme-button-color: #2c2525;
+  --light-modal-bg-color: #f3e3e3;
 
   --dark-main-bg: linear-gradient(45deg, #04053e 15%, #280135 50%, #04053e 85%);
   --dark-card-bg-color: #352185;
@@ -16,10 +17,12 @@
   --dark-card-svg-shadow: #dc9fff;
   --dark-text-color: #e2e2e2;
   --dark-theme-button-color: #c7a2a2;
+  --dark-modal-bg-color: #242424;
 
   --title-font: 2.5rem "Aladin", system-ui;
   --scoreboard-font: 1.2rem "Comic Relief", monospace, system-ui;
   --card-font: 1.3rem "Comic Relief", system-ui;
+  --modal-font: 1.2rem "Comic Relief", system-ui;
 }
 
 *, *::before, *::after {
@@ -172,6 +175,43 @@ h1, h2, h3, h4, h5, h6 {
 
   svg {
     filter: drop-shadow(0px 0px 6px light-dark(var(--light-card-svg-shadow), var(--dark-card-svg-shadow)));
+  }
+}
+
+#credits {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#creditsModal {
+  height: fit-content;
+  width: 600px;
+
+  font: var(--modal-font);
+
+  border-width: 0px;
+  border-radius: 8px;
+
+  background-color: light-dark(var(--light-modal-bg-color), var(--dark-modal-bg-color));
+}
+
+#creditsModal ul {
+  list-style-type: '- ';
+
+  p {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  li {
+    margin: 8px 0;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
   }
 }
 
