@@ -1,0 +1,193 @@
+:root {
+  --light-main-bg: linear-gradient(45deg, #fbc2eb 15%, #a6c1ee 50%, #fbc2eb 85%);
+  --light-card-bg-color: #ecea9b10;
+  --light-card-outline: #f7a7a5;
+  --light-card-box-shadow: #aab1d1;
+  --light-card-svg: #e60099;
+  --light-card-svg-shadow: #ff93f1;
+  --light-text-color: #1d1d1d;
+  --light-theme-button-color: #2c2525;
+
+  --dark-main-bg: linear-gradient(45deg, #04053e 15%, #280135 50%, #04053e 85%);
+  --dark-card-bg-color: #352185;
+  --dark-card-outline: #ab20fd;
+  --dark-card-box-shadow: #fdfdfd;
+  --dark-card-svg: #fbf8fd;
+  --dark-card-svg-shadow: #dc9fff;
+  --dark-text-color: #e2e2e2;
+  --dark-theme-button-color: #c7a2a2;
+
+  --title-font: 2.5rem "Aladin", system-ui;
+  --scoreboard-font: 1.2rem "Comic Relief", monospace, system-ui;
+  --card-font: 1.3rem "Comic Relief", system-ui;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+#bg {
+  position: absolute;
+  z-index: -1;
+
+  height: 100vh;
+  width: 100vw;
+
+  background: light-dark(var(--light-main-bg), var(--dark-main-bg));
+  background-size: 100% 100%;
+  animation: animatedBg 8s ease alternate infinite;
+}
+
+.game-container {
+  max-width: 1920px;
+  min-width: 1280px;
+  margin: 0 auto;
+  padding: 0 120px;
+}
+
+.header, .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 48px 0;
+
+  p {
+    color: light-dark(var(--light-text-color), var(--dark-text-color));
+  }
+}
+
+#gameTitle {
+  font: var(--title-font);
+}
+
+.score-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: var(--scoreboard-font);
+}
+
+.current-score {
+  display: flex;
+  gap: 24px;
+}
+
+#UIThemes {
+  display: flex;
+  gap: 16px;
+}
+
+#lightTheme, #darkTheme {
+  height: 36px;
+  width: 36px;
+
+  background: none;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+}
+
+.theme-btn svg {
+  color: light-dark(var(--light-theme-button-color), var(--dark-theme-button-color));
+}
+
+.theme-btn:hover {
+  svg {
+    filter: drop-shadow(0px 0px 6px light-dark(#000000, #ffffff));
+  }
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  gap: clamp(2rem, 3rem, 4rem);
+  height: fit-content;
+}
+
+.card {
+  width: clamp(6.625rem, 100%, 16rem);
+  height: clamp(11rem, 15.625vi, 18.75rem);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  padding: 12px;
+
+  border: 2px solid light-dark(var(--light-card-outline), var(--dark-card-outline));
+  border-radius: 12px;
+
+  background-color: light-dark(var(--light-card-bg-color), var(--dark-card-bg-color));
+}
+
+.card p {
+  color: light-dark(var(--light-text-color), var(--dark-text-color));
+  font: var(--card-font);
+}
+
+.card > svg {
+  height: clamp(48px, 4.5vi, 92px);
+  width: clamp(48px, 4.5vi, 92px);
+
+  color: light-dark(var(--light-card-svg), var(--dark-card-svg));
+}
+
+.card:hover {
+  box-shadow: 0px 0px 20px 0px light-dark(var(--light-card-box-shadow), var(--dark-card-box-shadow));
+
+  svg {
+    filter: drop-shadow(0px 0px 6px light-dark(var(--light-card-svg-shadow), var(--dark-card-svg-shadow)));
+  }
+}
+
+.auto-color-scheme {
+  color-scheme: light dark;
+}
+
+.light-color-scheme {
+  color-scheme: light;
+}
+
+.dark-color-scheme {
+  color-scheme: dark;
+}
+
+@keyframes animatedBg {
+  0%, 100% { opacity: 1; filter: brightness(100%); }
+  50% { opacity: 0.92; filter: brightness(120%); }
+}
